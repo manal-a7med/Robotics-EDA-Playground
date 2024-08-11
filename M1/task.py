@@ -22,31 +22,64 @@ from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 
 ################################ MAIN FUNCTION #######################################
 
-def simulator(sim):
-	"""
-	Purpose:
-	---
-	This function should implement the control logic for the given problem statement
-	You are required to actuate the rotary joints of the robot in this function, such that
-	it does the required tasks.
+#def simulator(sim):
+	
+	# """
+	# Purpose:
+	# ---
+	# This function should implement the control logic for the given problem statement
+	# You are required to actuate the rotary joints of the robot in this function, such that
+	# it does the required tasks.
 
-	Input Arguments:
-	---
-	`sim`    :   [ object ]
-		ZeroMQ RemoteAPI object
+	# Input Arguments:
+	# ---
+	# `sim`    :   [ object ]
+	# 	ZeroMQ RemoteAPI object
 
-	Returns:
-	---
-	None
+	# Returns:
+	# ---
+	# None
 
-	Example call:
-	---
-	simulator(sim)
-	"""
+	# Example call:
+	# ---
+	# simulator(sim)
+	# """
 	
 	#### YOUR CODE HERE ####
-	
-	return None
+
+def simulator(sim):
+    """
+    Purpose:
+    ---
+    This function should implement the control logic for the given problem statement.
+    You are required to actuate the rotary joints of the robot in this function, such that
+    it does the required tasks.
+
+    Input Arguments:
+    ---
+    `sim`    :   [ object ]
+        ZeroMQ RemoteAPI object
+
+    Returns:
+    ---
+    None
+
+    Example call:
+    ---
+    simulator(sim)
+    """
+    ljoint = sim.getObject('/crn_bot/joint_l')
+    rjoint = sim.getObject('/crn_bot/joint_r')
+
+#Setting the velocities for the joint
+    sim.setJointTargetVelocity(rjoint, 8.0)  
+    sim.setJointTargetVelocity(ljoint, -5.0)  
+   
+
+        
+    # except Exception as e:
+    # print(f"An error occurred: {e}")
+    return None
 	
 ######### YOU ARE NOT ALLOWED TO MAKE CHANGES TO THE MAIN CODE BELOW #########
 
